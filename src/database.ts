@@ -2,11 +2,12 @@ import { createPool, Pool } from 'mysql2/promise'
 
 export async function connect(): Promise<Pool> {
     const connection = await createPool({
-        host: 'bpxg7kdtw088bigqfxlw-mysql.services.clever-cloud.com',
-        user: 'um7oqqzbpqbi6svf',
-        password: 'ECA5GaFM82HiyAwK9X3b',
-        database: 'bpxg7kdtw088bigqfxlw',
-        connectionLimit: 3
+        host: 'mysql-186236-0.cloudclusters.net',
+        port: 10013,
+        user: 'admin',
+        password: 'swIyAqvQ',
+        database: 'privado',
+        connectionLimit: 15
     });
     return connection;
 }

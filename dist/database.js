@@ -14,11 +14,12 @@ const promise_1 = require("mysql2/promise");
 function connect() {
     return __awaiter(this, void 0, void 0, function* () {
         const connection = yield (0, promise_1.createPool)({
-            host: 'bpxg7kdtw088bigqfxlw-mysql.services.clever-cloud.com',
-            user: 'um7oqqzbpqbi6svf',
-            password: 'ECA5GaFM82HiyAwK9X3b',
-            database: 'bpxg7kdtw088bigqfxlw',
-            connectionLimit: 3
+            host: 'mysql-186236-0.cloudclusters.net',
+            port: 10013,
+            user: 'admin',
+            password: 'swIyAqvQ',
+            database: 'privado',
+            connectionLimit: 15
         });
         return connection;
     });

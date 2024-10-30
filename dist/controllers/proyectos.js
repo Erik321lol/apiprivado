@@ -22,11 +22,11 @@ const getEmpresas = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             COUNT(P.ID_Proyecto) AS Total_Proyectos,
             GROUP_CONCAT(DISTINCT C.Nombre_Consultor) AS Consultores
             FROM 
-            Empresa E
+            empresa E
         LEFT JOIN 
-            Proyecto P ON E.ID_Empresa = P.ID_Empresa AND P.Estado = 1
+            proyecto P ON E.ID_Empresa = P.ID_Empresa AND P.Estado = 1
         LEFT JOIN 
-            Consultor C ON P.ID_Consultor = C.ID_Consultor
+            consultor C ON P.ID_Consultor = C.ID_Consultor
         GROUP BY 
             E.ID_Empresa, E.Nombre_Empresa;`);
         res.json(posts); // Devuelve la lista de posts
@@ -49,7 +49,7 @@ const getConsultores = (req, res) => __awaiter(void 0, void 0, void 0, function*
                 Apellido_Consultor AS Apellido,
                 Telefono AS No_Telefono
             FROM 
-                Consultor
+                consultor
             WHERE 
                 Apellido_Consultor LIKE CONCAT(?, '%');`, [inicial]); // Aquí se corrige la forma de pasar `inicial`
         res.json(posts); // Devuelve la lista de consultores
@@ -72,11 +72,11 @@ const getProyectoConsultor = (req, res) => __awaiter(void 0, void 0, void 0, fun
             E.Nombre_Empresa,
             C.Nombre_Consultor
         FROM 
-            Proyecto P
+            proyecto P
         JOIN 
-            Empresa E ON P.ID_Empresa = E.ID_Empresa
+            empresa E ON P.ID_Empresa = E.ID_Empresa
         JOIN 
-            Consultor C ON P.ID_Consultor = C.ID_Consultor
+            consultor C ON P.ID_Consultor = C.ID_Consultor
         WHERE 
             P.ID_Consultor = ?;
         `, [id]);
@@ -98,11 +98,11 @@ const getProyectosEmpresa = (req, res) => __awaiter(void 0, void 0, void 0, func
             E.Nombre_Empresa,
             E.Direccion
         FROM 
-            Proyecto P
+            proyecto P
         JOIN 
-            Empresa E ON P.ID_Empresa = E.ID_Empresa
+            empresa E ON P.ID_Empresa = E.ID_Empresa
         JOIN 
-            Consultor C ON P.ID_Consultor = C.ID_Consultor
+            consultor C ON P.ID_Consultor = C.ID_Consultor
         WHERE 
             P.ID_Empresa = ?;`, [id]);
         res.json(posts);
@@ -124,7 +124,7 @@ const getProyectosInformacion = (req, res) => __awaiter(void 0, void 0, void 0, 
             Fecha_Fin,           
             Monto                  
         FROM 
-            Proyecto;`);
+            proyecto;`);
         res.json(posts);
     }
     catch (e) {
@@ -145,7 +145,7 @@ const getProyectosEstado = (req, res) => __awaiter(void 0, void 0, void 0, funct
             P.fecha_fin AS Fecha_Fin,
             P.monto AS Monto
         FROM 
-            Proyecto P
+            proyecto P
         WHERE 
             P.estado = ?; `, [estado]);
         res.json(posts);
