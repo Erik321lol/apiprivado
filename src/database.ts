@@ -6,7 +6,7 @@ export async function connect(): Promise<Pool> {
         user: 'um7oqqzbpqbi6svf',
         password: 'ECA5GaFM82HiyAwK9X3b',
         database: 'bpxg7kdtw088bigqfxlw',
-        connectionLimit: 10
+        connectionLimit: 3
     });
     return connection;
 }
